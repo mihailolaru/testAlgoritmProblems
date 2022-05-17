@@ -63,101 +63,165 @@
 //   console.log(parseRomanNumberToInteger("IX"));
 
 /* ### Int to roman ### */
-function integerToRoman(numb) {
-  const ones = Math.floor(numb % 10);
-  const tenths = Math.floor((numb / 10) % 10);
-  const hundreds = Math.floor((numb / 100) % 10);
-  const thousands = Math.floor(numb / 1000);
+// function integerToRoman(numb) {
+//   const ones = Math.floor(numb % 10);
+//   const tenths = Math.floor((numb / 10) % 10);
+//   const hundreds = Math.floor((numb / 100) % 10);
+//   const thousands = Math.floor(numb / 1000);
 
-  let romanNumber = "";
+//   let romanNumber = "";
 
-  if (thousands > 0) {
-    romanNumber += "M";
-  }
+//   if (thousands > 0) {
+//     romanNumber += "M";
+//   }
 
-  if (hundreds > 0) {
-    if (hundreds === 5) {
-      romanNumber += "D";
-      //Extend the conditional logic
-    } else if (hundreds < 10) {
-      romanNumber += "CM";
-    } else {
-      for (let count = 0; count < hundreds; count++) {
-        romanNumber += "C";
-      }
-    }
-  }
+//   if (hundreds > 0) {
+//     if (hundreds === 5) {
+//       romanNumber += "D";
+//       //Extend the conditional logic
+//     } else if (hundreds < 10) {
+//       romanNumber += "CM";
+//     } else {
+//       for (let count = 0; count < hundreds; count++) {
+//         romanNumber += "C";
+//       }
+//     }
+//   }
 
-  if (tenths > 0) {
-    if (tenths === 1) {
-      romanNumber += "X";
-    } else if (tenths === 5) {
-      romanNumber += "L";
-      //Extend the conditional logic
-    } else if (tenths < 10 && tenths > 2) {
-      romanNumber += "XC";
-    } else {
-      for (let count = 0; count < tenths; count++) {
-        romanNumber += "X";
-      }
-    }
-  }
+//   if (tenths > 0) {
+//     if (tenths === 1) {
+//       romanNumber += "X";
+//     } else if (tenths === 5) {
+//       romanNumber += "L";
+//       //Extend the conditional logic
+//     } else if (tenths < 10 && tenths > 2) {
+//       romanNumber += "XC";
+//     } else {
+//       for (let count = 0; count < tenths; count++) {
+//         romanNumber += "X";
+//       }
+//     }
+//   }
 
-  if (ones > 0) {
-    if (ones === 5) {
-      romanNumber += "V";
-    } else if (ones < 10 && ones > 8) {
-      for (let count = 0; count < 10 - ones; count++) {
-        romanNumber += "I";
-      }
-      romanNumber += "X";
-    } else if (ones <= 8 && ones > 5) {
-      romanNumber += "V";
-      for (let count = 0; count < ones - 5; count++) {
-        romanNumber += "I";
-      }
-    } else if (ones < 5 && ones > 3) {
-      for (let count = 0; count < 5 - ones; count++) {
-        romanNumber += "I";
-      }
-      romanNumber += "V";
-    } else {
-      for (let count = 0; count < ones; count++) {
-        romanNumber += "I";
-      }
-    }
-  }
+//   if (ones > 0) {
+//     if (ones === 5) {
+//       romanNumber += "V";
+//     } else if (ones < 10 && ones > 8) {
+//       for (let count = 0; count < 10 - ones; count++) {
+//         romanNumber += "I";
+//       }
+//       romanNumber += "X";
+//     } else if (ones <= 8 && ones > 5) {
+//       romanNumber += "V";
+//       for (let count = 0; count < ones - 5; count++) {
+//         romanNumber += "I";
+//       }
+//     } else if (ones < 5 && ones > 3) {
+//       for (let count = 0; count < 5 - ones; count++) {
+//         romanNumber += "I";
+//       }
+//       romanNumber += "V";
+//     } else {
+//       for (let count = 0; count < ones; count++) {
+//         romanNumber += "I";
+//       }
+//     }
+//   }
 
-  return romanNumber;
-}
+//   return romanNumber;
+// }
 
-console.log(" *** Vr I *** ");
-console.log("");
-console.log(integerToRoman(3));
-console.log(integerToRoman(58));
-console.log(integerToRoman(1994));
-console.log(integerToRoman(4));
-console.log(integerToRoman(9));
-console.log("");
-console.log(" *** Vr II *** ");
-console.log("");
+// console.log(" *** Vr I *** ");
+// console.log("");
+// console.log(integerToRoman(3));
+// console.log(integerToRoman(58));
+// console.log(integerToRoman(1994));
+// console.log(integerToRoman(4));
+// console.log(integerToRoman(9));
+// console.log("");
+// console.log(" *** Vr II *** ");
+// console.log("");
 
 function integerToRomanII(numb) {
-  const romanNumberMap = {
-    M: 1000,
-    D: 500,
-    C: 100,
-    L: 50,
-    X: 10,
-    V: 5,
-    I: 1,
-  };
-
+  
   let romanNumber = "";
 
+  const M = Math.floor(numb / 1000);
+  if (M > 0) {
+      romanNumber += "M".repeat(M);
+      numb -= M * 1000;
+  }
   
+  const CM = Math.floor(numb / 900);
+  if (CM > 0) {
+      romanNumber += "CM"
+      numb -= CM * 900;
+  }
 
-  return romanNumber;
+  const D = Math.floor(numb / 500);
+  if (D > 0) {
+      romanNumber += "D".repeat(D);
+      numb -= D * 500;
+  }
+
+  const CD = Math.floor(numb / 400);
+  if (CD > 0) {
+      romanNumber += "CD";
+      numb -= CD * 400;
+  }
+
+  const C = Math.floor(numb / 100);
+  if( C > 0 ){
+    romanNumber += "C".repeat(C);
+    numb -= C * 100;
+  }
+
+  const XC = Math.floor(numb / 90);
+  if(XC > 0){
+    romanNumber += "XC";
+    numb -= XC * 90;
+  }
+
+  const L = Math.floor( numb / 50);
+  if( L > 0 ){
+    romanNumber += "L".repeat(L);
+    numb -= L * 50;
+  }
+
+  const XL = Math.floor( numb / 40);
+  if( XL > 0 ) {
+    romanNumber += "XL";
+    numb -= XL * 40;
+  }
+
+  const X = Math.floor( numb / 10);
+  if( X > 0 ){
+    romanNumber += "X".repeat(X)
+    numb -= X * 10;
+  }
+
+  const IX = Math.floor( numb / 9);
+  if( IX > 0 ){
+    romanNumber += "IX";
+    numb -= IX * 9;
+  }
+
+  const V = Math.floor( numb / 5);
+  if (V > 0){
+    romanNumber += "V".repeat(V);
+    numb -= V * 5;
+  }
+
+  const IV = Math.floor( numb / 4 );
+  if (IV > 0){
+    romanNumber += "IV";
+    numb -= IV * 4;
+  }
+
+  romanNumber += "I".repeat(numb);
+  numb -= numb; 
+
+  return {romanNumber, numb};
 }
 
 console.log(integerToRomanII(3));
