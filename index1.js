@@ -64,18 +64,6 @@
 
 /* ### Int to roman ### */
 function integerToRoman(numb) {
-  const romanNumberMap = {
-    M: 1000,
-    D: 500,
-    C: 100,
-    L: 50,
-    X: 10,
-    V: 5,
-    I: 1,
-  };
-
-  
-
   const ones = Math.floor(numb % 10);
   const tens = Math.floor((numb / 10) % 10);
   const hundreds = Math.floor((numb / 100) % 10);
@@ -83,36 +71,63 @@ function integerToRoman(numb) {
 
   let romanNumber = "";
 
-  switch (numb) {
-    case thousands > 0:
-      for (let count = 0; count < thousands; count++) {
-        romanNumber += "M";
-      }
-    case hundreds > 0:
+  // M: 1000,
+  // 		D: 500,
+  // 		C: 100,
+  // 		L: 50,
+  // 		X: 10,
+  // 		V: 5,
+  // 		I: 1
+
+  if (thousands > 0) {
+    romanNumber += "M";
+  }
+
+  if (hundreds > 0) {
+    if (hundreds === 5) {
+      romanNumber += "D";
+    } else {
       for (let count = 0; count < hundreds; count++) {
         romanNumber += "C";
       }
-    case tens > 0:
+    }
+  }
+
+  if (tens > 0) {
+    if (tens === 5) {
+      romanNumber += "L";
+    } else {
       for (let count = 0; count < tens; count++) {
         romanNumber += "X";
       }
-    case ones > 0:
+    }
+  }
+
+  if (ones > 0) {
+    if (ones === 5) {
+      romanNumber += "I";
+    } else if (ones < 8 && ones > 5) {
+      romanNumber += "V";
+      for (let count = 0; count < ones - 5; count++) {
+        romanNumber += "I";
+      }
+    } else if (ones < 5 && ones > 3) {
+      for (let count = 0; count < 5 - ones; count++) {
+        romanNumber += "I";
+      }
+      romanNumber += "V";
+    } else {
       for (let count = 0; count < ones; count++) {
         romanNumber += "I";
       }
+    }
   }
 
-  return [romanNumber, ones, tens, hundreds, thousands];
+  return romanNumber;
 }
-
-// console.log("3", integerToRoman(3) );
-// console.log("58", integerToRoman(58) );
-// console.log("1994", integerToRoman(1994) );
-// console.log("4", integerToRoman(4) );
-// console.log("9", integerToRoman(9) );
 
 console.log(integerToRoman(3));
 console.log(integerToRoman(58));
 console.log(integerToRoman(1994));
-console.log(integerToRoman(4));
-console.log(integerToRoman(9));
+console.log(integerToRoman(3));
+console.log(integerToRoman(7));
