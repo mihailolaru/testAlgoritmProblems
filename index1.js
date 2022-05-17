@@ -65,19 +65,11 @@
 /* ### Int to roman ### */
 function integerToRoman(numb) {
   const ones = Math.floor(numb % 10);
-  const tens = Math.floor((numb / 10) % 10);
+  const tenths = Math.floor((numb / 10) % 10);
   const hundreds = Math.floor((numb / 100) % 10);
   const thousands = Math.floor(numb / 1000);
 
   let romanNumber = "";
-
-  // M: 1000,
-  // 		D: 500,
-  // 		C: 100,
-  // 		L: 50,
-  // 		X: 10,
-  // 		V: 5,
-  // 		I: 1
 
   if (thousands > 0) {
     romanNumber += "M";
@@ -86,6 +78,8 @@ function integerToRoman(numb) {
   if (hundreds > 0) {
     if (hundreds === 5) {
       romanNumber += "D";
+    } else if (hundreds < 10) {
+      romanNumber += "CM";
     } else {
       for (let count = 0; count < hundreds; count++) {
         romanNumber += "C";
@@ -93,20 +87,29 @@ function integerToRoman(numb) {
     }
   }
 
-  if (tens > 0) {
-    if (tens === 5) {
+  if (tenths > 0) {
+    if (tenths === 1) {
+      romanNumber += "X";
+    } else if (tenths === 5) {
       romanNumber += "L";
+    } else if (tenths < 10) {
+      romanNumber += "XC";
     } else {
-      for (let count = 0; count < tens; count++) {
+      for (let count = 0; count < tenths; count++) {
         romanNumber += "X";
       }
     }
   }
-
+  
   if (ones > 0) {
     if (ones === 5) {
-      romanNumber += "I";
-    } else if (ones < 8 && ones > 5) {
+      romanNumber += "V";
+    } else if (ones < 10 && ones > 8) {
+      for (let count = 0; count < 10 - ones; count++) {
+        romanNumber += "I";
+      }
+      romanNumber += "X";
+    } else if (ones <= 8 && ones > 5) {
       romanNumber += "V";
       for (let count = 0; count < ones - 5; count++) {
         romanNumber += "I";
@@ -123,11 +126,11 @@ function integerToRoman(numb) {
     }
   }
 
-  return romanNumber;
+  return [ romanNumber ];
 }
 
 console.log(integerToRoman(3));
 console.log(integerToRoman(58));
 console.log(integerToRoman(1994));
-console.log(integerToRoman(3));
-console.log(integerToRoman(7));
+console.log(integerToRoman(4));
+console.log(integerToRoman(9));
