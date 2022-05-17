@@ -126,7 +126,7 @@ function integerToRoman(numb) {
     }
   }
 
-  return [ romanNumber ];
+  return romanNumber;
 }
 
 console.log(integerToRoman(3));
