@@ -78,6 +78,7 @@ function integerToRoman(numb) {
   if (hundreds > 0) {
     if (hundreds === 5) {
       romanNumber += "D";
+      //Extend the conditional logic
     } else if (hundreds < 10) {
       romanNumber += "CM";
     } else {
@@ -92,7 +93,8 @@ function integerToRoman(numb) {
       romanNumber += "X";
     } else if (tenths === 5) {
       romanNumber += "L";
-    } else if (tenths < 10) {
+      //Extend the conditional logic
+    } else if (tenths < 10 && tenths > 2) {
       romanNumber += "XC";
     } else {
       for (let count = 0; count < tenths; count++) {
@@ -134,3 +136,4 @@ console.log(integerToRoman(58));
 console.log(integerToRoman(1994));
 console.log(integerToRoman(4));
 console.log(integerToRoman(9));
+console.log(integerToRoman(20));
