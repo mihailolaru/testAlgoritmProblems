@@ -102,7 +102,7 @@ function integerToRoman(numb) {
       }
     }
   }
-  
+
   if (ones > 0) {
     if (ones === 5) {
       romanNumber += "V";
@@ -131,9 +131,37 @@ function integerToRoman(numb) {
   return romanNumber;
 }
 
+console.log(" *** Vr I *** ");
+console.log("");
 console.log(integerToRoman(3));
 console.log(integerToRoman(58));
 console.log(integerToRoman(1994));
 console.log(integerToRoman(4));
 console.log(integerToRoman(9));
-console.log(integerToRoman(20));
+console.log("");
+console.log(" *** Vr II *** ");
+console.log("");
+
+function integerToRomanII(numb) {
+  const romanNumberMap = {
+    M: 1000,
+    D: 500,
+    C: 100,
+    L: 50,
+    X: 10,
+    V: 5,
+    I: 1,
+  };
+
+  let romanNumber = "";
+
+  
+
+  return romanNumber;
+}
+
+console.log(integerToRomanII(3));
+console.log(integerToRomanII(58));
+console.log(integerToRomanII(1994));
+console.log(integerToRomanII(4));
+console.log(integerToRomanII(9));
