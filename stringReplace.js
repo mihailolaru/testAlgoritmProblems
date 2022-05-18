@@ -36,12 +36,29 @@
 
 // # solution 3 - can use any methods, but banned regexp and native statements (`for`, `if` and so on)
 
+
+
+/* ### Implementation with methods. ### */
+
+function replaceSubstringsMethods(initialString, oldSubstring, newSubstring) {
+  initialString = initialString.includes(oldSubstring)
+  ? initialString.replace(oldSubstring, newSubstring)
+  : initialString;
+
+  return initialString.includes(oldSubstring) ? replaceSubstringsMethods(initialString, oldSubstring, newSubstring) : initialString;  
+}
+
+console.log("Implementation with methods");
+console.log(replaceSubstringsMethods('a random text with some words and letter a', 'a', '!!!'));
+console.log("");
+console.log("Implementation with native js statements.");
+
 /* ### Implementation with native js statements. ### */
 
-function replaceSubstrings(initialString, oldSubstring, newSubstring) {
+function replaceSubstringsNative(initialString, oldSubstring, newSubstring) {
   let subStringsEquality = false;
 
-  let eqStart = 0;
+  let eqStartIndex = 0;
 
   //Check if the old substring first char is present in the initialString.
   for (let index = 0; index < initialString.length; index++) {
@@ -49,37 +66,14 @@ function replaceSubstrings(initialString, oldSubstring, newSubstring) {
       eqStart = index;
       break;
     }
-  }
-
-  if (eqStart !== 0) {
-    for (
-      let startIndex = eqStart;
-      startIndex < oldSubstring.length;
-      startIndex++
-    ) {
-      for (
-        let oldStringIndex = 0;
-        oldStringIndex < oldSubstring.length;
-        oldStringIndex++
-      ) {
-        if (initialSubstring[startIndex] === oldSubstring[oldStringIndex]) {
-          subStringsEquality = true;
-        } else {
-          return "No matching subStrings";
-        }
-      }
-    }
-  }
+  }   
 
   //If the whole oldSubstring is present in the
   if (subStringsEquality) {
-    for (let index = eqStart; index < oldSubstring.length; index++) {
-      for (let i = 0; i < oldSubstring.length; i++) {
-        initialSubstring[index] = newSubstring[i];
-      }
-    }
+	
   }
+
   return initialString;
 }
 
-console.log(replaceSubstrings(["H", "e", "l", "l", "o"], ["l"], ["m"]));
+console.log(replaceSubstringsNative(["H", "e", "l", "l", "o"], ["l"], ["m"]));
