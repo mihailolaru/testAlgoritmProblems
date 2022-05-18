@@ -36,7 +36,30 @@
 
 // # solution 3 - can use any methods, but banned regexp and native statements (`for`, `if` and so on)
 
+/* ### Implementation with native js statements. ### */
 
+// function replaceSubstringsNative(initialString, oldSubstring, newSubstring) {
+//   let subStringsEquality = false;
+
+//   let eqStartIndex = 0;
+
+//   //Check if the old substring first char is present in the initialString.
+//   for (let index = 0; index < initialString.length; index++) {
+//     if (initialString[index] === oldSubstring[0]) {
+//       eqStart = index;
+//       break;
+//     }
+//   }   
+
+//   //If the whole oldSubstring is present in the
+//   if (subStringsEquality) {
+	
+//   }
+
+//   return initialString;
+// }
+
+// console.log(replaceSubstringsNative(["H", "e", "l", "l", "o"], ["l"], ["m"]));
 
 /* ### Implementation with methods. ### */
 
@@ -50,30 +73,3 @@ function replaceSubstringsMethods(initialString, oldSubstring, newSubstring) {
 
 console.log("Implementation with methods");
 console.log(replaceSubstringsMethods('a random text with some words and letter a', 'a', '!!!'));
-console.log("");
-console.log("Implementation with native js statements.");
-
-/* ### Implementation with native js statements. ### */
-
-function replaceSubstringsNative(initialString, oldSubstring, newSubstring) {
-  let subStringsEquality = false;
-
-  let eqStartIndex = 0;
-
-  //Check if the old substring first char is present in the initialString.
-  for (let index = 0; index < initialString.length; index++) {
-    if (initialString[index] === oldSubstring[0]) {
-      eqStart = index;
-      break;
-    }
-  }   
-
-  //If the whole oldSubstring is present in the
-  if (subStringsEquality) {
-	
-  }
-
-  return initialString;
-}
-
-console.log(replaceSubstringsNative(["H", "e", "l", "l", "o"], ["l"], ["m"]));
