@@ -8,8 +8,10 @@ const snail = [
 
 function parseSnail( arr ) {
 	for( let i = 0; i < arr.length; i++ ){
-		for( let y = 0; y < arr.length; y++ ){
-			console.log(arr[i][y]);
+		for( let d = 0; d < i; d++ ){
+			for( let y = 0; y < arr.length; y++ ){
+				console.log(arr[i][y]);
+			}
 		}
 	}
 }
