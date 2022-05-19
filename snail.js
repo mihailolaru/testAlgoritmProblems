@@ -23,18 +23,11 @@ const snail3 = [
 function parseSnail(arr) {
   let arrLength = arr.length;
   let increment = 1;
-  let startPoint = 0;
-
-  console.log("");
-  console.log("arrLength: ", arrLength);
-  console.log("increment: ", increment);
-  console.log("");
+  let startPoint = 0; 
 
   // right
   for (let x = 0; x < arrLength - increment; x++) {
-    console.log(`right [${startPoint}][${x}] `, arr[startPoint][x]);
-    count++;
-    console.log("count", count);
+    console.log(`right [${startPoint}][${x}] `, arr[startPoint][x]);   
   }
 
   //down
@@ -42,9 +35,7 @@ function parseSnail(arr) {
     console.log(
       `down [${x}][${arrLength - increment}] `,
       arr[x][arrLength - 1]
-    );
-    count++;
-    console.log("count", count);
+    );  
   }
 
   //left
@@ -52,26 +43,17 @@ function parseSnail(arr) {
     console.log(
       `left [${arrLength - increment}][${x}] `,
       arr[arrLength - increment][x]
-    );
-    count++;
-    console.log("count", count);
+    );  
   }
 
   //up
   for (let x = arrLength - increment; x > 0; x--) {
-    console.log(`up [${x}][${startPoint}] `, arr[x][startPoint]);
-    count++;
-    console.log("count", count);
+    console.log(`up [${x}][${startPoint}] `, arr[x][startPoint]); 
   }
 
   arrLength--;
   increment++;
   startPoint++;
-
-  console.log("");
-  console.log("arrLength: ", arrLength);
-  console.log("increment: ", increment);
-  console.log("");
 }
 
 parseSnail(snail2);
