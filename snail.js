@@ -12,35 +12,69 @@ const snail2 = [
   [7, 6, 5],
 ];
 
+const snail3 = [
+  [1, 2, 3],
+  [12, 13, 4],
+  [11, 14, 5],
+  [10, 15, 6],
+  [9, 8, 7],
+];
+
 function parseSnail(arr) {
-  let length = arr.length;
-  console.log("length: ", length);
+  let arrLength = arr.length;
+  let increment = 1;
+  let startPoint = 0;
+
+  console.log("");
+  console.log("arrLength: ", arrLength);
+  console.log("increment: ", increment);
+  console.log("");
 
   // right
-  for (let x = 0; x < length - 1; x++) {
-    console.log(`[0][${x}] `, arr[0][x]);
+  for (let x = 0; x < arrLength - increment; x++) {
+    console.log(`right [${startPoint}][${x}] `, arr[startPoint][x]);
+    count++;
+    console.log("count", count);
   }
 
   //down
-  for (let x = 0; x < length - 1; x++) {
-    console.log(`[${x}][${length - 1}] `, arr[x][length - 1]);
+  for (let x = 0; x < arrLength - increment; x++) {
+    console.log(
+      `down [${x}][${arrLength - increment}] `,
+      arr[x][arrLength - 1]
+    );
+    count++;
+    console.log("count", count);
   }
 
   //left
-  for (let x = length - 1; x > 0; x--) {
-    console.log(`[${length - 1}][${x}] `, arr[length - 1][x]);
+  for (let x = arrLength - increment; x > 0; x--) {
+    console.log(
+      `left [${arrLength - increment}][${x}] `,
+      arr[arrLength - increment][x]
+    );
+    count++;
+    console.log("count", count);
   }
 
   //up
-  for (let x = length - 1; x > 0; x--) {
-    console.log(`[${x}][${0}] `, arr[x][0]);
+  for (let x = arrLength - increment; x > 0; x--) {
+    console.log(`up [${x}][${startPoint}] `, arr[x][startPoint]);
+    count++;
+    console.log("count", count);
   }
 
-  length--;
-  console.log("length:", length);
+  arrLength--;
+  increment++;
+  startPoint++;
+
+  console.log("");
+  console.log("arrLength: ", arrLength);
+  console.log("increment: ", increment);
+  console.log("");
 }
 
-parseSnail(snail);
+parseSnail(snail2);
 
 /*
 0 [0, 1, 2]
