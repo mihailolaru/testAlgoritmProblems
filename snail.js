@@ -1,4 +1,4 @@
-const snail = [
+const snailL = [
   [1, 2, 3, 4, 5],
   [16, 17, 18, 19, 6],
   [15, 24, 25, 20, 7],
@@ -24,7 +24,7 @@ up    3.1
 right 2.1 2.2
 */
 
-const snail2 = [
+const snailS = [
   [1, 2, 3],
   [8, 9, 4],
   [7, 6, 5],
@@ -42,7 +42,7 @@ up    2.0 1.0
 right 1.1
 */
 
-const snail3 = [
+const snailM = [
   [1, 2, 3],
   [12, 13, 4],
   [11, 14, 5],
@@ -51,40 +51,59 @@ const snail3 = [
 ];
 
 function parseSnail(arr) {
-  let arrLength = arr.length;
+  let arrYLength = arr.length;
+  let arrXLength = arr[0].length;
   let increment = 1;
   let startPoint = 0;
 
-  // TODO Figure out the general loop
-  // right
-  for (let x = 0; x < arrLength - increment; x++) {
-    console.log(`right [${startPoint}][${x}] `, arr[startPoint][x]);
-  }
+  for (
+    ;
+    arrXLength > Math.floor(arr[0].length / 2) &&
+    arrYLength > Math.floor(arr.length / 2);
 
-  //down
-  for (let x = 0; x < arrLength - increment; x++) {
-    console.log(
-      `down  [${x}][${arrLength - increment}] `,
-      arr[x][arrLength - 1]
-    );
-  }
+  ) {
+    console.log("");
+    console.log("arrYLength", arrYLength);
+    console.log("arrXLength", arrXLength);
+    console.log("increment", increment);
+    console.log("startPoint", startPoint);
 
-  //left
-  for (let x = arrLength - increment; x > 0; x--) {
-    console.log(
-      `left  [${arrLength - increment}][${x}] `,
-      arr[arrLength - increment][x]
-    );
-  }
+    // right
+    for (let x = startPoint; x < arrXLength - increment; x++) {
+      console.log(`right [${startPoint}][${x}] `, arr[startPoint][x]);
+    }
 
-  //up
-  for (let x = arrLength - increment; x > 0; x--) {
-    console.log(`up    [${x}][${startPoint}] `, arr[x][startPoint]);
-  }
+    //down
+    for (let y = startPoint; y < arrYLength - increment; y++) {
+      console.log(
+        `down  [${y}][${arrYLength - increment}] `,
+        arr[y][arrYLength - 1]
+      );
+    }
 
-  arrLength--;
-  increment++;
-  startPoint++;
+    //left
+    for (let x = arrXLength - increment; x > 0; x--) {
+      console.log(
+        `left  [${arrXLength - increment}][${x}] `,
+        arr[arrXLength - increment][x]
+      );
+    }
+
+    //up
+    for (let y = arrYLength - increment; y > 0; y--) {
+      console.log(`up    [${y}][${startPoint}] `, arr[y][startPoint]);
+    }
+
+    arrYLength--;
+    arrXLength--;
+    increment++;
+    startPoint++;
+
+    console.log("arrYLength", arrYLength);
+    console.log("arrXLength", arrXLength);
+    console.log("increment", increment);
+    console.log("startPoint", startPoint);
+  }
 }
 
-parseSnail(snail2);
+parseSnail(snailL);
